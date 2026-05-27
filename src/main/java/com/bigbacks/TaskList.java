@@ -17,9 +17,9 @@ public record TaskList() {
         = fields ☑️
         = methods ☑️
       - Sides ------------------
-        = fields
-        = methods
-      - Drinks ------------------
+        = fields ☑️
+        = methods ☑️
+      - Drinks ------------------ morning
         = fields
         = methods
       - Orders ------------------
@@ -30,7 +30,7 @@ public record TaskList() {
     - Menu
         = fields
         = methods
-          - screen-1 ------------------
+          - screen-1 ------------------ afternoon
           - screen-2 ------------------
           - screen-3 ------------------
           - screen-4 ------------------
@@ -81,7 +81,7 @@ MODEL (com.pluralsight.deli.models) ========
     = method override:
      - getPrice() (Calculates base by size + progressive meat/cheese premiums)
 
-  - Sides ------------------
+  - AddOns ------------------
     = fields:
      - String type (e.g., potato salad, chips)
     = method override:

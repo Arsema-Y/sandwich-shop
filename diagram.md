@@ -34,7 +34,7 @@ classDiagram
         +getPrice() double
     }
 
-    class Sides {
+    class AddOns {
         -String saltLevel
         +Sides(String name, String size)
         +setSaltLevel(String saltLevel)
@@ -49,7 +49,7 @@ classDiagram
     }
 
     MenuItem <|-- Sandwich : extends
-    MenuItem <|-- Sides : extends
+    MenuItem <|-- AddOns : extends
     MenuItem <|-- Drink : extends
 
     %% Order Management

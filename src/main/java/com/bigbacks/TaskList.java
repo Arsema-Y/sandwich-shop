@@ -7,15 +7,15 @@ public record TaskList() {
     ARCHITECTURE ===============================
     - packages ☑️
     - classes ☑️
-    - guide comment
+    - guide comment ️️☑️
 
     MODEL ==============================
-    - Interface
-    - Abstract
+    - Interface ☑️
+    - Abstract ☑️
     - Heirs
       - Sandwich ------------------
-        = fields
-        = methods
+        = fields ☑️
+        = methods ☑️
       - Sides ------------------
         = fields
         = methods
@@ -56,16 +56,16 @@ ARCHITECTURE ===============================
 - guide comment ☑️
 
 MODEL (com.pluralsight.deli.models) ========
-- Interface (ItemPrice)
-    = method: double getPrice()
+- Interface (ItemPrice) ️
+    = method: double getPrice() ️️️☑️
 - Abstract Class (MenuItem implements ItemPrice)
-    = fields:
+    = fields:️☑️
      - String name,
      - String size
     = constructor & getters
 - Heirs
   - Sandwich ------------------
-    = fields:
+    = fields:️☑️
      - List<String> meats,
      - List<String> cheeses,
      - List<String> regularToppings,

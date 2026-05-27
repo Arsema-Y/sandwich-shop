@@ -1,18 +1,32 @@
 package com.bigbacks.model;
 
-public class MenuItem implements ItemPrice{
+public abstract class MenuItem implements ItemPrice{
 
         //Attributes ======================
-        // store name (e.g., "Custom Sandwich", "Cola", "Chips")
-        // store size (e.g., "4\"", "8\"", "12\"", "Small", "Medium", "Large")
+        // store name ("Custom Sandwich", "Cola", "Chips")
+    private String name;
+        // store size (4", 8", 12" -> S, M, L)
+    private char size;
 
         //constructor===================
         // takes name and size to initialize the common fields
 
-        //getters======================
+    public MenuItem(String name, char size) {
+        this.name = name;
+        this.size = size;
+    }
+
+
+    //getters======================
         // standard getters for name and size
 
-        //derived getters==================
+    public String getName() {return name;}
+
+    public char getSize() {return size;}
+
+    //derived getters==================
         // public abstract double getPrice(); <-- Every child MUST calculate this
 
+    @Override
+    public abstract double getPrice();
 }

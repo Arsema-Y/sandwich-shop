@@ -1,23 +1,173 @@
 package com.bigbacks.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Sandwich extends MenuItem {
 
-    //Attributes ======================
-    // store bread type, toasted status (boolean)
-    // List collections for meats, cheeses, regular toppings, sauces
-    // boolean flags for extraMeat and extraCheese
+    // Attributes ======================
+    private String breadType;
+    private boolean isToasted;
 
-    //constructor===================
-    // takes bread type, size, toasted status, passes name ("Sandwich") to super()
-    // initializes all array lists as empty collections
+    private List<String> meats;
+    private boolean isExtraMeat;
 
-    //setters/adders========================
-    // addMeat(string name, boolean isExtra)
-    // addCheese(string name, boolean isExtra)
-    // addTopping(string toppingName)
-    // addSauce(string sauceName)
+    private List<String> cheeses;
+    private boolean isExtraCheese;
 
-    //derived getters==================
-    // getPrice() -> calculates base price by size + premium additions by size
-    // getSummary() -> returns formatted string of all sandwich ingredients
+    private List<String> regularToppings;
+    private List<String> sauces;
+
+    // Constructor ======================
+    public Sandwich(String name, char size, String breadType, boolean isToasted) {
+        super(name, size);
+
+        this.breadType = breadType;
+        this.isToasted = isToasted;
+
+        // Initialize empty ArrayLists
+        this.meats = new ArrayList<>();
+        this.cheeses = new ArrayList<>();
+        this.regularToppings = new ArrayList<>();
+        this.sauces = new ArrayList<>();
+
+        // Start as false by default
+        this.isExtraMeat = false;
+        this.isExtraCheese = false;
+    }
+
+    // Setters / Adders ========================
+
+    // 1. Meat Adder ----------------
+    public void addMeat(String meatName, boolean isExtra) {
+        this.meats.add(meatName); // Add to meat List
+        if (isExtra) {
+            this.isExtraMeat = true; // premium price trigger
+        }
+    }
+
+    // 2. Cheese Adder ----------------
+    public void addCheese(String cheeseName, boolean isExtra) {
+        this.cheeses.add(cheeseName); // Add to cheese List
+        if (isExtra) {
+            this.isExtraCheese = true; // premium price trigger
+        }
+    }
+
+    // 3. Regular Toppings Adder ----------------
+    public void addRegularTopping(String toppingName) {
+        this.regularToppings.add(toppingName); // Add to toppings List
+    }
+
+    // 4. Sauce Adder ----------------
+    public void addSauce(String sauceName) {
+        this.sauces.add(sauceName); // Add to sauce List
+    }
+
+    //  Getters ===================
+    public String getBreadType() {return breadType;}
+
+    public boolean isToasted() {return isToasted;}
+
+    // Derived Getters ==================
+    @Override
+    public double getPrice() {
+        // 1. Check size for base price
+        // 2. Base premium cost for  meats/cheeses on Size
+        // 3. Check if isExtraMeat or isExtraCheese are true
+
+            double calculatedPrice = 0.00;
+
+            // --- SMALL SANDWICH (4") LOGIC ---
+            if (getSize() == 'S') {
+                // 1. Add Base Price
+                calculatedPrice += 5.50;
+
+                // 2. Add Premium Meat Price (Only if they added meat)
+                if (!meats.isEmpty()) {calculatedPrice += 1.00;}
+
+                //    Add Premium Cheese Price (Only if they added cheese)
+                if (!cheeses.isEmpty()) {calculatedPrice += 0.75;}
+
+                // 3. Add Extra Meat
+                if (isExtraMeat) {calculatedPrice += 0.50;}
+
+                //    Add Extra Cheese
+                if (isExtraCheese) {calculatedPrice += 0.30;}
+            }
+
+            // --- MEDIUM SANDWICH (8") LOGIC ---
+            else if (getSize() == 'M') {
+                calculatedPrice += 7.00;
+
+                if (!meats.isEmpty()) {calculatedPrice += 2.00;}
+
+                if (!cheeses.isEmpty()) {calculatedPrice += 1.50;}
+
+                if (isExtraMeat) {calculatedPrice += 1.00;}
+
+                if (isExtraCheese) {calculatedPrice +=0.60;}
+            }
+
+            // --- LARGE SANDWICH (12") LOGIC ---
+            else if (getSize() == 'L') {
+                calculatedPrice += 8.50;
+
+                if (!meats.isEmpty()) {calculatedPrice += 3.00;}
+
+                if (!cheeses.isEmpty()) {calculatedPrice += 2.25;}
+
+                if (isExtraMeat) {calculatedPrice += 1.50;}
+
+                if (isExtraCheese) {calculatedPrice += 0.90;}
+            }
+
+
+        return calculatedPrice;
+
+    }
+
+    public String getSummary() {
+        // 1. Create a StringBuilder to build the receipt text
+        StringBuilder sb = new StringBuilder();
+
+        // 2. Add the main header info (Size, Name, Bread, and Toasting)
+        sb.append("--- ").append(getSize()).append(" ").append(getName()).append(" ---\n");
+        sb.append("Bread: ").append(breadType);
+        if (isToasted) {sb.append(" (Toasted)");}
+
+        sb.append("\n");
+
+        // 3. Add Meats (Check if the list has anything in it first!)
+        sb.append("Meats: ");
+        if (meats.isEmpty()) {sb.append("None\n");}
+        else {sb.append(String.join(", ", meats)); // commas delimiter
+            if (isExtraMeat) {sb.append(" (*Extra Meat*)");}
+            sb.append("\n");
+        }
+
+        // 4. Add Cheeses
+        sb.append("Cheeses: ");
+        if (cheeses.isEmpty()) {sb.append("None\n");}
+        else {sb.append(String.join(", ", cheeses));
+            if (isExtraCheese) {sb.append(" (*Extra Cheese*)");}
+            sb.append("\n");
+        }
+
+        // 5. Add Regular Toppings
+        sb.append("Toppings: ");
+        if (regularToppings.isEmpty()) {sb.append("None\n");}
+        else {sb.append(String.join(", ", regularToppings)).append("\n");}
+
+        // 6. Add Sauces
+        sb.append("Sauces: ");
+        if (sauces.isEmpty()) {sb.append("None\n");}
+        else {sb.append(String.join(", ", sauces)).append("\n");}
+
+        // 7. Add the Price ( 2 decimal places)
+        sb.append(String.format("Price: $%.2f\n", getPrice()));
+
+        // 8. Convert the StringBuilder into a regular String
+        return sb.toString();
+    }
 }

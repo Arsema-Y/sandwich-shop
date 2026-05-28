@@ -129,45 +129,45 @@ public class Sandwich extends MenuItem {
 
     public String getSummary() {
         // 1. Create a StringBuilder to build the receipt text
-        StringBuilder sb = new StringBuilder();
+        StringBuilder receipt = new StringBuilder();
 
         // 2. Add the main header info (Size, Name, Bread, and Toasting)
-        sb.append("--- ").append(getSize()).append(" ").append(getName()).append(" ---\n");
-        sb.append("Bread: ").append(breadType);
-        if (isToasted) {sb.append(" (Toasted)");}
+        receipt.append("--- ").append(getSize()).append(" ").append(getName()).append(" ---\n");
+        receipt.append("Bread: ").append(breadType);
+        if (isToasted) {receipt.append(" (Toasted)");}
 
-        sb.append("\n");
+        receipt.append("\n");
 
-        // 3. Add Meats (Check if the list has anything in it first!)
-        sb.append("Meats: ");
-        if (meats.isEmpty()) {sb.append("None\n");}
-        else {sb.append(String.join(", ", meats)); // commas delimiter
-            if (isExtraMeat) {sb.append(" (*Extra Meat*)");}
-            sb.append("\n");
+        // 3. Add Meats (Check if the list has anything in it first)
+        receipt.append("Meats: ");
+        if (meats.isEmpty()) {receipt.append("None\n");}
+        else {receipt.append(String.join(", ", meats)); // commas delimiter
+            if (isExtraMeat) {receipt.append(" (*Extra Meat*)");}
+            receipt.append("\n");
         }
 
         // 4. Add Cheeses
-        sb.append("Cheeses: ");
-        if (cheeses.isEmpty()) {sb.append("None\n");}
-        else {sb.append(String.join(", ", cheeses));
-            if (isExtraCheese) {sb.append(" (*Extra Cheese*)");}
-            sb.append("\n");
+        receipt.append("Cheeses: ");
+        if (cheeses.isEmpty()) {receipt.append("None\n");}
+        else {receipt.append(String.join(", ", cheeses));
+            if (isExtraCheese) {receipt.append(" (*Extra Cheese*)");}
+            receipt.append("\n");
         }
 
         // 5. Add Regular Toppings
-        sb.append("Toppings: ");
-        if (regularToppings.isEmpty()) {sb.append("None\n");}
-        else {sb.append(String.join(", ", regularToppings)).append("\n");}
+        receipt.append("Toppings: ");
+        if (regularToppings.isEmpty()) {receipt.append("None\n");}
+        else {receipt.append(String.join(", ", regularToppings)).append("\n");}
 
         // 6. Add Sauces
-        sb.append("Sauces: ");
-        if (sauces.isEmpty()) {sb.append("None\n");}
-        else {sb.append(String.join(", ", sauces)).append("\n");}
+        receipt.append("Sauces: ");
+        if (sauces.isEmpty()) {receipt.append("None\n");}
+        else {receipt.append(String.join(", ", sauces)).append("\n");}
 
         // 7. Add the Price ( 2 decimal places)
-        sb.append(String.format("Price: $%.2f\n", getPrice()));
+        receipt.append(String.format("Price: $%.2f\n", getPrice()));
 
         // 8. Convert the StringBuilder into a regular String
-        return sb.toString();
+        return receipt.toString();
     }
 }

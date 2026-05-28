@@ -56,16 +56,16 @@ ARCHITECTURE ===============================
 - guide comment ☑️
 
 MODEL (com.pluralsight.deli.models) ========
-- Interface (ItemPrice) ️
-    = method: double getPrice() ️️️☑️
-- Abstract Class (MenuItem implements ItemPrice)
-    = fields:️☑️
+- ☑️Interface (ItemPrice) ️
+    = method: double getPrice() ️️️
+- ☑️Abstract Class (MenuItem implements ItemPrice)
+    = fields:️
      - String name,
      - String size
     = constructor & getters
 - Heirs
-  - Sandwich ------------------
-    = fields:️☑️
+  - ☑️Sandwich ------------------
+    = fields:️
      - List<String> meats,
      - List<String> cheeses,
      - List<String> regularToppings,
@@ -81,7 +81,7 @@ MODEL (com.pluralsight.deli.models) ========
     = method override:
      - getPrice() (Calculates base by size + progressive meat/cheese premiums)
 
-  - AddOns ------------------
+  - ☑️AddOns ------------------
     = fields:
      - String type (e.g., potato salad, chips)
     = method override:

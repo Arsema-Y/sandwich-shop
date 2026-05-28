@@ -9,11 +9,13 @@ public class AddOns extends MenuItem{
     //constructor===================
     public AddOns(String name, char size, int type) {
         super(name, size);
+
         this.addOnType = type;
     }
 
+    //setter==================
     public void setSaltLevel(int saltLevel) {
-        this.saltLevel = saltLevel; // Correctly storing the state
+        this.saltLevel = saltLevel;
 
         switch(saltLevel){
             case 0 -> System.out.println("No Salt");
@@ -22,6 +24,7 @@ public class AddOns extends MenuItem{
         }
     }
 
+    //getter==================
 
     //derived getters==================
     // getPrice() -> checks sideType and size (1: Small, 2: Large)

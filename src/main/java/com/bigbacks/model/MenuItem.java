@@ -29,4 +29,5 @@ public abstract class MenuItem implements ItemPrice{
 
     @Override
     public abstract double getPrice();
-}
+
+  }

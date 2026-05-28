@@ -36,6 +36,12 @@ public record TaskList() {
           - screen-4 ------------------
           - screen-5 ------------------
           - screen-6 ------------------
+
+           ~ ☑️skeletal = 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8
+           ~ field = 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8
+           ~ body = 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8
+           ~ switch statements = 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8
+
         = Edits
 
     DATA ============================
@@ -102,6 +108,13 @@ MODEL (com.pluralsight.deli.models) ========
     = method:
      - double calculateOrderTotal() (Loops/Streams through orderItems calling getPrice())
 
+  - ☑️SignatureSandwiches
+   = fields
+    - choice
+   = method
+    - constructor()
+    - makeSandwiches()
+
 UI (com.pluralsight.deli.ui) ===============
 - Menu / UserInterface Class
     = fields: Scanner scanner, Order currentOrder
@@ -134,7 +147,9 @@ UI (com.pluralsight.deli.ui) ===============
                and handles 1: Confirm,
                            2: Cancel)
     = Edits / UI Customization   -- (
-      - Add text color formatting, neat ascii text borders)
+      - Add text color formatting,
+      - neat ascii text borders
+      - utilize emojis
 
 DATA (com.pluralsight.deli.services) =======
 - OrderHistory / ReceiptManager

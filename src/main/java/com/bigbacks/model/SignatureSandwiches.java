@@ -1,16 +1,81 @@
 package com.bigbacks.model;
 
+import java.util.List;
+
 public class SignatureSandwiches extends Sandwich {
+    //Attributes
+    private int choice;
 
     //constructor===================
     // takes signatureName (e.g., "Philly Cheese Steak"), size, bread, toasted
     // calls super(bread, size, toasted)
-    // IF name is "Philly Cheese Steak":
-    //    calls this.addMeat("Steak", false);
-    //    calls this.addCheese("American", false);
-    //    calls this.addTopping("Peppers");
-    //    calls this.addSauce("Mayo");
+    public SignatureSandwiches(int choice, String name, char size, String breadType, boolean isToasted) {
+        super(name, size, breadType, isToasted);
+
+        this.choice = choice;
+
+        //solidify sandwiches
+        makeSignatureSandwiches();
+
+    }
+
+    // Helper method--------------
+    public void makeSignatureSandwiches() {
+        switch (this.choice) {
+            case 1 -> {
+                //-----------------------work in progress--------------------------------
+                setName("The Goat");
+                this.addProtein("Tofu", false);
+                this.addRegularTopping("Lettuce");
+                this.addRegularTopping("Tomato");
+                this.addRegularTopping("Onion");
+                this.addRegularTopping("Guacamole");
+                this.addSauce("Mustard");
+                this.addSauce("Vinaigrette");
+            }
+            case 2 -> {
+                setName("The Honey-badger");
+                this.addProtein("Chicken", false);
+                this.addRegularTopping("Lettuce");
+                this.addRegularTopping("Tomato");
+                this.addRegularTopping("Onion");
+                this.addRegularTopping("Guacamole");
+                this.addSauce("Mustard");
+                this.addSauce("Vinaigrette");
+            }
+            case 3 -> {
+                setName("Big Silverback");
+                this.addProtein("Bdacon", false);
+                this.addRegularTopping("Lettuce");
+                this.addRegularTopping("Tomato");
+                this.addSauce("Mayo");
+            }
+            case 4 -> {
+                setName("Big Grizzly");
+                this.addProtein("Bacon", false);
+                this.addRegularTopping("Lettuce");
+                this.addRegularTopping("Tomato");
+                this.addSauce("Mayo");
+            }
+            case 5 -> {
+                setName("Big Hippo");
+                this.addProtein("Bacon", false);
+                this.addRegularTopping("Lettuce");
+                this.addRegularTopping("Tomato");
+                this.addSauce("Mayo");
+            }
+            default -> {
+                // Optional: Handles the case where a name doesn't match any recipe
+                System.out.println("Unavailable.\n Would you like to make a Custom Sandwich?" );
+            }
+        }
+        ;
+    }
 
     //derived getters==================
-    // getPrice() -> calls super.getPrice() + adds a flat signature premium fee (optional)
+    // getPrice() -> calls super.getPrice()
+    @Override
+    public double getPrice() {
+        return super.getPrice();
+    }
 }

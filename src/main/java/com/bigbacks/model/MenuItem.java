@@ -24,6 +24,11 @@ public abstract class MenuItem implements ItemPrice{
 
     public char getSize() {return size;}
 
+    //setters======================
+    public void setName(String name) {this.name = name;}
+
+    public void setSize(char size) {this.size = size;}
+
     //derived getters==================
         // public abstract double getPrice(); <-- Every child MUST calculate this
 

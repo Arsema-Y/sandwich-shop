@@ -20,11 +20,11 @@ public record TaskList() {
         = fields ☑️
         = methods ☑️
       - Drinks ------------------ morning
-        = fields
-        = methods
+        = fields ☑️
+        = methods ☑️
       - Orders ------------------
-        = fields
-        = methods
+        = fields ☑️
+        = methods ☑️
 
     UI =================================
     - Menu
@@ -87,13 +87,13 @@ MODEL (com.pluralsight.deli.models) ========
     = method override:
      - getPrice() (Flat rate based on size)
 
-  - Drinks ------------------
+  - ☑️Drinks ------------------
     = fields:
      - String flavor
     = method override:
      - getPrice() (Flat rate based on size)
 
-  - Orders ------------------
+  - ☑️Orders ------------------
     = fields:
      - List<MenuItem> orderItems
     = methods:

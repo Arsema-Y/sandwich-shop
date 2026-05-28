@@ -127,8 +127,8 @@ public class Sandwich extends MenuItem {
 
     }
 
-    public String getSummary() {
-        // 1. Create a StringBuilder to build the receipt text
+    public String getReceipt() {
+        // 1. Create a StringBuilder to build the receipt txt
         StringBuilder receipt = new StringBuilder();
 
         // 2. Add the main header info (Size, Name, Bread, and Toasting)

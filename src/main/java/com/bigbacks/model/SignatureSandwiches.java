@@ -1,6 +1,6 @@
 package com.bigbacks.model;
 
-public class SignatureSandwich extends Sandwich {
+public class SignatureSandwiches extends Sandwich {
 
     //constructor===================
     // takes signatureName (e.g., "Philly Cheese Steak"), size, bread, toasted

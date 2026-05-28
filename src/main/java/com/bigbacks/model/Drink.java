@@ -1,6 +1,6 @@
 package com.bigbacks.model;
 
-public class Drinks extends MenuItem {
+public class Drink extends MenuItem {
     //Attributes ======================
     private int drinkType; // (1.Soda, 2.Smoothie, 3.Coffee, 4.Tea")
     private int flavor; /* Soda     Smoothie   Coffee    Tea
@@ -12,7 +12,7 @@ public class Drinks extends MenuItem {
     //constructor===================
     // takes drinkType, flavor, size -> passes name to super()
 
-    public Drinks(String name, char size, int drinkType, int flavor) {
+    public Drink(String name, char size, int drinkType, int flavor) {
         super(name, size);
 
         this.drinkType = drinkType;

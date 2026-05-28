@@ -1,13 +1,13 @@
 package com.bigbacks.model;
 
-public class AddOns extends MenuItem{
+public class AddOn extends MenuItem{
 //Attributes ======================
     // store sideType (e.g., "Chips", "Cookie", "Brownie", "Fries")
     private int addOnType;
-    private int saltLevel;
+    private int saltLevel; //for fries
 
     //constructor===================
-    public AddOns(String name, char size, int type) {
+    public AddOn(String name, char size, int type) {
         super(name, size);
 
         this.addOnType = type;

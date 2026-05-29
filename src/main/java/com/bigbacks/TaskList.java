@@ -37,12 +37,13 @@ public record TaskList() {
           - screen-5 ------------------
           - screen-6 ------------------
 
-           ~ ☑️skeletal = 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8
-           ~ field = 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8
-           ~ body = 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8
-           ~ switch statements = 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8
+           ~ ☑️skeletal = 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 + 9
+           ~ ☑️field = 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 + 9
+           ~ body = ☑️1 - ☑️2 - ☑️3 - ☑️4 - ☑️5 - 6 - 7 - 8 + 9
+           ~ switch statements = 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 + 9
 
         = Edits
+
 
     DATA ============================
     - OrderHistory
@@ -52,6 +53,8 @@ public record TaskList() {
 
     APP ===========================
     - main method
+
+    README ========================
      */
 
     /*TASK-LIST-2
@@ -150,6 +153,7 @@ UI (com.pluralsight.deli.ui) ===============
       - Add text color formatting,
       - neat ascii text borders
       - utilize emojis
+      - clean console after each new screen
 
 DATA (com.pluralsight.deli.services) =======
 - OrderHistory / ReceiptManager

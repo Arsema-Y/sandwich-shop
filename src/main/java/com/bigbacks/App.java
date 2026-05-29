@@ -1,11 +1,12 @@
 package com.bigbacks;
 
-import java.awt.*; //TODO : ASK
+import com.bigbacks.ui.Menu;
 
 public class App {
-
     public static void main(String[] args) {
-        Menu interface;
+        System.out.println("Starting application pipeline...");
 
+        Menu ui = new Menu();
+        Menu.displayHomeScreen();
     }
 }

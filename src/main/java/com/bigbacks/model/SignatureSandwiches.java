@@ -1,7 +1,5 @@
 package com.bigbacks.model;
 
-import java.util.List;
-
 public class SignatureSandwiches extends Sandwich {
     //Attributes
     private int choice;
@@ -19,9 +17,13 @@ public class SignatureSandwiches extends Sandwich {
 
     }
 
+    public int getChoice() {return choice;}
+
+    public static void setChoice(int sandwichChoice) {}
+
     // Helper method--------------
     public void makeSignatureSandwiches() {
-        switch (this.choice) {
+        switch (getChoice()) {
             case 1 -> {
                 //-----------------------work in progress--------------------------------
                 setName("The Goat");
@@ -34,30 +36,13 @@ public class SignatureSandwiches extends Sandwich {
                 this.addSauce("Vinaigrette");
             }
             case 2 -> {
-                setName("The Honey-badger");
-                this.addProtein("Chicken", false);
-                this.addRegularTopping("Lettuce");
-                this.addRegularTopping("Tomato");
-                this.addRegularTopping("Onion");
-                this.addRegularTopping("Guacamole");
-                this.addSauce("Mustard");
-                this.addSauce("Vinaigrette");
-            }
-            case 3 -> {
-                setName("Big Silverback");
-                this.addProtein("Bdacon", false);
-                this.addRegularTopping("Lettuce");
-                this.addRegularTopping("Tomato");
-                this.addSauce("Mayo");
-            }
-            case 4 -> {
                 setName("Big Grizzly");
                 this.addProtein("Bacon", false);
                 this.addRegularTopping("Lettuce");
                 this.addRegularTopping("Tomato");
                 this.addSauce("Mayo");
             }
-            case 5 -> {
+            case 3 -> {
                 setName("Big Hippo");
                 this.addProtein("Bacon", false);
                 this.addRegularTopping("Lettuce");
@@ -76,6 +61,12 @@ public class SignatureSandwiches extends Sandwich {
     // getPrice() -> calls super.getPrice()
     @Override
     public double getPrice() {
-        return super.getPrice();
+
+        return switch (getChoice()){
+            case 1 -> 10.00;
+            case 2 -> 10.00;
+            case 3 -> 10.00;
+            default -> 0;
+        };
     }
 }

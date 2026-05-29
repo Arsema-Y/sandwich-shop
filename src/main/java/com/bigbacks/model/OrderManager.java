@@ -43,19 +43,19 @@ public class OrderManager {
     public String getOrderReceipt() {
         StringBuilder receiptBuilder = new StringBuilder();
 
-        receiptBuilder.append("===== YOUR ORDER SUMMARY =====\n");
+        receiptBuilder.append("===== YOUR ORDER SUMMARY ======\n");
 
         // Loop through every item in the cart
         for (MenuItem item : orderItems) {
             //  MenuItem should a getName() method and getPrice() logic
-            receiptBuilder.append(item.getName())
+            receiptBuilder.append("       " + item.getName())
                     .append(" - $")
                     .append(String.format("%.2f", item.getPrice()))
                     .append("\n");
         }
 
         receiptBuilder.append("-----------------------------\n");
-        receiptBuilder.append("Total: $")
+        receiptBuilder.append("       Total: $")
                 .append(String.format("%.2f", getOrderTotal()))
                 .append("\n");
 

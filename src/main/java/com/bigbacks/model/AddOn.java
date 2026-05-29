@@ -3,25 +3,19 @@ package com.bigbacks.model;
 public class AddOn extends MenuItem{
 //Attributes ======================
     // store sideType (e.g., "Chips", "Cookie", "Brownie", "Fries")
-    private int addOnType;
-    private int saltLevel; //for fries
+    private String addOnType;
+    private String saltLevel; //for fries
 
     //constructor===================
-    public AddOn(String name, char size, int type) {
+    public AddOn(String type, String name, char size) {
         super(name, size);
 
         this.addOnType = type;
     }
 
     //setter==================
-    public void setSaltLevel(int saltLevel) {
+    public void setSaltLevel(String saltLevel) {
         this.saltLevel = saltLevel;
-
-        switch(saltLevel){
-            case 0 -> System.out.println("No Salt");
-            case 1 -> System.out.println("Light Salt");
-            case 2 -> System.out.println("Regular Salt");
-        }
     }
 
     //getter==================

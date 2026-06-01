@@ -114,7 +114,7 @@ public class Menu {
     // ➕displaySandwichChoiceScreen() -> [1] Signature Sandwiches , [2] Build Custom
     static void displaySandwichTypeScreen() {
         //--------field--------
-        runSandwich = true;
+        boolean runSandwich = true;
 
         //--------body--------
         while (runSandwich) {

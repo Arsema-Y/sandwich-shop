@@ -124,7 +124,7 @@ public class Menu {
                     -------------------------------
                              BUILD OPTIONS
                     -------------------------------
-                    """);
+                            🥪    ⭐    🥪""");
             System.out.println("""
                     -------------------------------
                     |    1. SIGNATURE SANDWICH    |
@@ -404,7 +404,7 @@ public class Menu {
                     -------------------------------
                             CUSTOM SANDWICH
                     -------------------------------
-                    """);
+                           🥪     🥪    🥪""");
 
             // ---------------------Name
             String name = "Custom Sandwich";
@@ -588,11 +588,11 @@ public class Menu {
 
         //--------body--------
         while (runDrink) {
-            System.out.println("""
+            System.out.print("""
                     -------------------------------
                                 DRINKS
                     -------------------------------
-                    """);
+                           🥤     🥤     🥤""");
             // ---------------------drink type (int->String)
             System.out.println("""
                     -------------------------------
@@ -772,7 +772,7 @@ public class Menu {
                     -------------------------------
                                 ADD-ONs
                     -------------------------------
-                    """);
+                           🍟     🍪     🍟""");
             // ---------------------drink type (int->String)
             System.out.println("""
                     -------------------------------
@@ -1039,7 +1039,8 @@ public class Menu {
                         |          S. Small           |
                         |          M. Medium          |
                         |          L. Large           |
-                        -------------------------------""");
+                        -------------------------------
+                        ➰➰➰➰➰➰➰➰➰➰➰➰➰➰""");
     }
 
 
@@ -1106,7 +1107,8 @@ public class Menu {
                         |       S. Small (4")         |
                         |       M. Medium (8")        |
                         |       L. Large (12")        |
-                        -------------------------------""");
+                        -------------------------------
+                        ➰➰➰➰➰➰➰➰➰➰➰➰➰➰""");
     }
 
      static void displayProteinMenu() {
@@ -1121,7 +1123,8 @@ public class Menu {
                 |         5. Chicken          |
                 |     -------------------     |
                 |         0. DONE             |
-                -------------------------------""");
+                -------------------------------
+                ➰➰➰➰➰➰➰➰➰➰➰➰➰➰""");
     }
 
      static String proteinFromInt(int n) {
@@ -1150,7 +1153,8 @@ public class Menu {
                 |      4. Swiss Cheese        |
                 |     -------------------     |
                 |         0. DONE             |
-                -------------------------------""");
+                -------------------------------
+                ➰➰➰➰➰➰➰➰➰➰➰➰➰➰""");
     }
 
      static String dairyFromInt(int n) {
@@ -1181,7 +1185,8 @@ public class Menu {
                 |         7. Guacamole        |
                 |     -------------------     |
                 |         0. DONE             |
-                -------------------------------""");
+                -------------------------------
+                ➰➰➰➰➰➰➰➰➰➰➰➰➰➰""");
     }
 
      static String veggieFromInt(int number) {
@@ -1211,7 +1216,8 @@ public class Menu {
                 |           3. Ketchup        |
                 |           4. Ranch          |
                 |           5. Vinaigrette    |
-                -------------------------------""");
+                -------------------------------
+                ➰➰➰➰➰➰➰➰➰➰➰➰➰➰""");
     }
 
      static String sauceFromInt(int n) {

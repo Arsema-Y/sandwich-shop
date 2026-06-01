@@ -16,6 +16,10 @@ public class Menu {
     static OrderManager currentOrder = new OrderManager();
     static boolean runHome;
     static boolean runOrder;
+    static boolean runSandwich;
+    static boolean runDrink;
+    static boolean runAddOn;
+    static boolean runCheckout;
 
     //⭐9. Sign on-screen====================
     //displaySignInScreen() -> [1] Sign-in, [2] Sign-up, [3] Guest
@@ -31,7 +35,7 @@ public class Menu {
         while (runHome) {
             System.out.print("""
                     -------------------------------
-                                 HELLO
+                            🏠   HELLO
                     -------------------------------
                     """);
             System.out.println("""
@@ -68,18 +72,18 @@ public class Menu {
 
         //--------body--------
         while (runOrder) {
-            System.out.print("""
-                    -------------------------------
-                               NEW ORDER
-                    -------------------------------
-                    """);
             System.out.println("""
                     -------------------------------
-                    |         1. Add SANDWICH     |
-                    |         2. Add DRINK        |
-                    |         3. Add ADD-ON       |
-                    |         0. Cancel Order     |
-                    -------------------------------""");
+                           ➕  NEW ORDER  ➕
+                    -------------------------------
+                           🍴     🍴     🍴""");
+            System.out.print("""
+                    -------------------------------
+                    |       1. Add SANDWICH 🥪    |
+                    |       2. Add DRINK 🥤       |
+                    |       3. Add ADD-ON 🍟      |
+                    |       0. Cancel Order ✖     |
+                    -------------------------------\n""");
 
             //----------User Input-----------
             int screenChoice = input.nextInt();
@@ -116,16 +120,16 @@ public class Menu {
     // ➕displaySandwichChoiceScreen() -> [1] Signature Sandwiches , [2] Build Custom
     static void displaySandwichTypeScreen() {
         //--------field--------
-        boolean runSandwich = true;
+        runSandwich = true;
 
         //--------body--------
         while (runSandwich) {
-            System.out.print("""
+            System.out.println("""
                     -------------------------------
                              BUILD OPTIONS
                     -------------------------------
                             🥪    ⭐    🥪""");
-            System.out.println("""
+            System.out.print("""
                     -------------------------------
                     |    1. SIGNATURE SANDWICH    |
                     |    2. CUSTOM SANDWICH       |
@@ -133,7 +137,7 @@ public class Menu {
                     \n
                     |    0. Cancel Order          |
                     -------------------------------
-                    ➰➰➰➰➰➰➰➰➰➰➰➰➰➰""");
+                    ➰➰➰➰➰➰➰➰➰➰➰➰➰➰\n""");
 
             //----------User Input-----------
             int screenChoice = input.nextInt();
@@ -393,14 +397,13 @@ public class Menu {
         }
     }
 
-
     // 5. displayCustomSandwichScreen() -> completely blank build path
     static void displayCustomSandwichScreen() {
         //--------field--------
         boolean runCustomSandwich = true;
 
         while (runCustomSandwich) {
-            System.out.print("""
+            System.out.println("""
                     -------------------------------
                             CUSTOM SANDWICH
                     -------------------------------
@@ -410,7 +413,7 @@ public class Menu {
             String name = "Custom Sandwich";
 
             // ---------------------Bread type
-            System.out.println("""
+            System.out.print("""
                     -------------------------------
                            Carb: BREAD TYPE
                     ===============================
@@ -419,7 +422,7 @@ public class Menu {
                     |          3. Rye             |
                     |          4. Wrap            |
                     -------------------------------
-                    ➰➰➰➰➰➰➰➰➰➰➰➰➰➰""");
+                    ➰➰➰➰➰➰➰➰➰➰➰➰➰➰\n""");
 
             int breadChoice = input.nextInt();
             String breadType = switch (breadChoice) {
@@ -584,17 +587,17 @@ public class Menu {
     //                         Step 3: [1] Small, [2] Medium, [3] Large
     static void displayDrinkScreen() {
         //--------field--------
-        boolean runDrink = true;
+        runDrink = true;
 
         //--------body--------
         while (runDrink) {
-            System.out.print("""
+            System.out.println("""
                     -------------------------------
                                 DRINKS
                     -------------------------------
                            🥤     🥤     🥤""");
             // ---------------------drink type (int->String)
-            System.out.println("""
+            System.out.print("""
                     -------------------------------
                              DRINK TYPE
                     ===============================
@@ -603,7 +606,7 @@ public class Menu {
                     |         3. Coffee           |
                     |         4. Tea              |
                     -------------------------------
-                    ➰➰➰➰➰➰➰➰➰➰➰➰➰➰""");
+                    ➰➰➰➰➰➰➰➰➰➰➰➰➰➰ln""");
             //----------User Input-----------
             int drinkTypeChoice = input.nextInt();
             String drinkType = switch (drinkTypeChoice) {
@@ -618,7 +621,7 @@ public class Menu {
             if (drinkTypeChoice == 1) {
                 System.out.println("""
                         -------------------------------
-                                     SODA
+                                 🥤   SODA   🥤
                         ===============================
                         |          1. Coke             |
                         |          2. Sprite           |
@@ -655,7 +658,7 @@ public class Menu {
             } else if (drinkTypeChoice == 2) {
                 System.out.println("""
                         -------------------------------
-                                   SMOOTHIE
+                                🥭  SMOOTHIE  🍓
                         ===============================
                         |         1. Mango             |
                         |         2. Banana            |
@@ -691,7 +694,7 @@ public class Menu {
             } else if (drinkTypeChoice == 3) {
                 System.out.println("""
                         -------------------------------
-                                     COFFEE
+                                 ☕  COFFEE  ☕
                         ===============================
                         |           1. Hot            |
                         |           2. Cold           |
@@ -722,7 +725,7 @@ public class Menu {
             } else if (drinkTypeChoice == 4) {
                 System.out.println("""
                         -------------------------------
-                                     TEA
+                                 🫖   TEA   🫖
                         ===============================
                         |           1. Hot            |
                         |           2. Cold           |
@@ -764,7 +767,7 @@ public class Menu {
     // displaySideScreen() -> Options: [1] Chips, [2] Fries, [3] Cookie, [4] Brownie -> Prompt size
     static void displayAddOnScreen() {
         //--------field--------
-        boolean runAddOn = true;
+        runAddOn = true;
 
         //--------body--------
         while (runAddOn) {
@@ -956,7 +959,7 @@ public class Menu {
     //⭐if signed-in + is using Cupon, Step 1: ask for cupon code,
     //                                  Step 2: apply cupon discount on totalPrice
     static void displayCheckoutScreen() {
-        boolean runCheckout = true;
+        runCheckout = true;
 
         while (runCheckout) {
 
@@ -1022,15 +1025,39 @@ public class Menu {
 
         //--------control switch---------;
         switch (changeScreen) {
-            case '1' -> displayDrinkScreen();
-            case '2' -> displayAddOnScreen();
-            case '0' -> displayCheckoutScreen();
+            case '1' -> {
+                runHome = false;
+                runOrder = false;
+                runSandwich = false;
+                runAddOn = false;
+                runCheckout = false;
+
+                runDrink = true;
+            }
+            case '2' -> {
+                runHome = false;
+                runOrder = false;
+                runSandwich = false;
+                runDrink = false;
+                runCheckout = false;
+
+                runAddOn = true;
+            }
+            case '0' -> {
+                runHome = false;
+                runOrder = false;
+                runSandwich = false;
+                runDrink = false;
+                runAddOn = false;
+
+                runCheckout = true;
+            }
             case 'x' -> exitScreen();
         }
         ;
     }
 
-    //
+    //non-sandwich menu
     static void displaySizeMenu(){
         System.out.println("""
                         -------------------------------
@@ -1042,7 +1069,6 @@ public class Menu {
                         -------------------------------
                         ➰➰➰➰➰➰➰➰➰➰➰➰➰➰""");
     }
-
 
     //Sandwich menus
     static void displaySignatureSandwichesMenu(){
@@ -1092,7 +1118,7 @@ public class Menu {
     static void displayCustomizingRequest(){
         System.out.println("""
                     -------------------------------
-                       ? CUSTOMIZE INGREDIENTS ?
+                      ❔ CUSTOMIZE INGREDIENTS ❔
                     -------------------------------
                     |          1. Yes             |
                     |          2. No              |
@@ -1111,10 +1137,11 @@ public class Menu {
                         ➰➰➰➰➰➰➰➰➰➰➰➰➰➰""");
     }
 
+// protein menu
      static void displayProteinMenu() {
         System.out.println("""
                 -------------------------------
-                            PROTEIN
+                       🥩   PROTEIN   🥩
                 ===============================
                 |         1. Steak            |
                 |         2. Ham              |
@@ -1142,10 +1169,11 @@ public class Menu {
         return proteinFromInt(c - '0');
     }
 
+//dairy menu
      static void displayDairyMenu() {
         System.out.println("""
                 -------------------------------
-                             DAIRY
+                        🧀   DAIRY   🧀
                 ===============================
                 |      1. American Cheese     |
                 |      2. Provolone Cheese    |
@@ -1171,10 +1199,11 @@ public class Menu {
         return dairyFromInt(c - '0');
     }
 
+//veggie menu
      static void displayVeggieMenu() {
         System.out.println("""
                 -------------------------------
-                            VEGGIES
+                       🍅   VEGGIES    🍅
                 ===============================
                 |         1. Lettuce          |
                 |         2. Jalapenos        |
@@ -1206,6 +1235,7 @@ public class Menu {
         return veggieFromInt(characterizedNumber - '0');
     }
 
+//sauce menu
      static void displaySauceMenu() {
         System.out.println("""
                 -------------------------------

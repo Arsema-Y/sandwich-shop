@@ -9,7 +9,7 @@ process
 ## 💻Overview
  Project Diagram
  
-![project diagram.png](project%20diagram.png)
+<![project diagram.png](project%20diagram.png)>
 
 ## ✨ Features ✨
 

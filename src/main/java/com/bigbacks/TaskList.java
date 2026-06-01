@@ -47,14 +47,15 @@ public record TaskList() {
 
     DATA ============================
     - OrderHistory
-        = method
-        = exception
+        = method ☑️
+        = exception ☑️
 
 
     APP ===========================
-    - main method
+    - main method ☑️
 
     README ========================
+
      */
 
     /*TASK-LIST-2
@@ -151,7 +152,7 @@ UI (com.pluralsight.deli.ui) ===============
                            2: Cancel)
     = Edits / UI Customization   -- (
       - Add text color formatting,
-      - neat ascii text borders
+      - ☑️neat ascii text borders
       - utilize emojis
       - clean console after each new screen
 
@@ -169,5 +170,9 @@ APP (com.pluralsight.deli) =================
     = main method -
       - (Instantiates Menu and calls displayHomeScreen() to stat off the application)
  */
+
+    /*TASK-LIST-3
+    - do as I go 😱
+     */
 
 }

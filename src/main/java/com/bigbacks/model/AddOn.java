@@ -27,6 +27,7 @@ public class AddOn extends MenuItem{
         return
                 switch (getSize()){
             case 'S' -> 1.0;
+            case 'M' -> 2.0;
             case 'L' -> 3.0;
             default -> 0.0;
         };

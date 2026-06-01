@@ -27,6 +27,7 @@ public class SignatureSandwiches extends Sandwich {
             case 1 -> {
                 //-----------------------work in progress--------------------------------
                 setName("The Goat");
+                setSize('l');
                 this.addProtein("Tofu", false);
                 this.addRegularTopping("Lettuce");
                 this.addRegularTopping("Tomato");
@@ -37,6 +38,7 @@ public class SignatureSandwiches extends Sandwich {
             }
             case 2 -> {
                 setName("Big Grizzly");
+                setSize('l');
                 this.addProtein("Bacon", false);
                 this.addRegularTopping("Lettuce");
                 this.addRegularTopping("Tomato");
@@ -44,6 +46,7 @@ public class SignatureSandwiches extends Sandwich {
             }
             case 3 -> {
                 setName("Big Hippo");
+                setSize('l');
                 this.addProtein("Bacon", false);
                 this.addRegularTopping("Lettuce");
                 this.addRegularTopping("Tomato");
@@ -61,12 +64,6 @@ public class SignatureSandwiches extends Sandwich {
     // getPrice() -> calls super.getPrice()
     @Override
     public double getPrice() {
-
-        return switch (getChoice()){
-            case 1 -> 10.00;
-            case 2 -> 10.00;
-            case 3 -> 10.00;
-            default -> 0;
-        };
+        return super.getPrice();
     }
 }

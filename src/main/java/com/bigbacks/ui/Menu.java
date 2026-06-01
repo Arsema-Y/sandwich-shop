@@ -15,11 +15,6 @@ public class Menu {
     static Scanner input = new Scanner(System.in);
     static OrderManager currentOrder = new OrderManager();
     static boolean runHome;
-    static boolean runOrder;
-    static boolean runSandwich;
-    static boolean runDrink;
-    static boolean runAddOn;
-    static boolean runCheckout;
 
     //⭐9. Sign on-screen====================
     //displaySignInScreen() -> [1] Sign-in, [2] Sign-up, [3] Guest
@@ -41,7 +36,7 @@ public class Menu {
             System.out.println("""
                     -------------------------------
                     |         1. New Order        |
-                    |         0. EXIT             |
+                    |         0. EXIT  ✖️         |
                     -------------------------------""");
 
             //----------User Input-----------
@@ -68,15 +63,14 @@ public class Menu {
     // displayOrderScreen() -> [1] Add Sandwich, [2] Add Drink, [3] Add Side, [4] Checkout
     static void displayOrderScreen() {
         //--------field--------
-        runOrder = true;
+        boolean runOrder = true;
 
         //--------body--------
         while (runOrder) {
             System.out.println("""
                     -------------------------------
                            ➕  NEW ORDER  ➕
-                    -------------------------------
-                           🍴     🍴     🍴""");
+                    -------------------------------""");
             System.out.print("""
                     -------------------------------
                     |       1. Add SANDWICH 🥪    |
@@ -587,7 +581,7 @@ public class Menu {
     //                         Step 3: [1] Small, [2] Medium, [3] Large
     static void displayDrinkScreen() {
         //--------field--------
-        runDrink = true;
+        boolean runDrink = true;
 
         //--------body--------
         while (runDrink) {
@@ -767,7 +761,7 @@ public class Menu {
     // displaySideScreen() -> Options: [1] Chips, [2] Fries, [3] Cookie, [4] Brownie -> Prompt size
     static void displayAddOnScreen() {
         //--------field--------
-        runAddOn = true;
+        boolean runAddOn = true;
 
         //--------body--------
         while (runAddOn) {
@@ -959,7 +953,7 @@ public class Menu {
     //⭐if signed-in + is using Cupon, Step 1: ask for cupon code,
     //                                  Step 2: apply cupon discount on totalPrice
     static void displayCheckoutScreen() {
-        runCheckout = true;
+        boolean runCheckout = true;
 
         while (runCheckout) {
 
@@ -1025,33 +1019,9 @@ public class Menu {
 
         //--------control switch---------;
         switch (changeScreen) {
-            case '1' -> {
-                runHome = false;
-                runOrder = false;
-                runSandwich = false;
-                runAddOn = false;
-                runCheckout = false;
-
-                runDrink = true;
-            }
-            case '2' -> {
-                runHome = false;
-                runOrder = false;
-                runSandwich = false;
-                runDrink = false;
-                runCheckout = false;
-
-                runAddOn = true;
-            }
-            case '0' -> {
-                runHome = false;
-                runOrder = false;
-                runSandwich = false;
-                runDrink = false;
-                runAddOn = false;
-
-                runCheckout = true;
-            }
+            case '1' -> displayDrinkScreen();
+            case '2' -> displayAddOnScreen();
+            case '0' -> displayCheckoutScreen();
             case 'x' -> exitScreen();
         }
         ;

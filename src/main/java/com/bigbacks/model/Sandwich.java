@@ -1,6 +1,7 @@
 package com.bigbacks.model;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class Sandwich extends MenuItem {
@@ -9,7 +10,7 @@ public class Sandwich extends MenuItem {
     private String breadType;
     private boolean isToasted;
 
-    private List<String> protein;
+    public List<String> proteins;
     private boolean isExtraProtein;
 
     private List<String> cheeses;
@@ -26,7 +27,7 @@ public class Sandwich extends MenuItem {
         this.isToasted = isToasted;
 
         // Initialize empty ArrayLists
-        this.protein = new ArrayList<>();
+        this.proteins = new ArrayList<>();
         this.cheeses = new ArrayList<>();
         this.regularToppings = new ArrayList<>();
         this.sauces = new ArrayList<>();
@@ -36,19 +37,36 @@ public class Sandwich extends MenuItem {
         this.isExtraCheese = false;
     }
 
+    // Getters ========================
+    public List<String> getProteins() {
+        return proteins;
+    }
+
+    public List<String> getDairy() {
+        return cheeses;
+    }
+
+    public List<String> getVeggies() {
+        return regularToppings;
+    }
+
+    public List<String> getSauces() {
+        return sauces;
+    }
+
     // Setters / Adders ========================
 
     // 1. Meat Adder ----------------
     public void addProtein
     (String proteinName, boolean isExtra) {
-        this.protein.add(proteinName); // Add to meat List
+        this.proteins.add(proteinName); // Add to meat List
         if (isExtra) {
             this.isExtraProtein = true; // premium price trigger
         }
     }
 
     // 2. Cheese Adder ----------------
-    public void addCheese(String cheeseName, boolean isExtra) {
+    public void addDairy(String cheeseName, boolean isExtra) {
         this.cheeses.add(cheeseName); // Add to cheese List
         if (isExtra) {
             this.isExtraCheese = true; // premium price trigger
@@ -65,10 +83,36 @@ public class Sandwich extends MenuItem {
         this.sauces.add(sauceName); // Add to sauce List
     }
 
-    //  Getters ===================
-    public String getBreadType() {return breadType;}
+    //---------------------------------------------
+    // 1. Meat Remover ----------------
+    public void removeProtein
+    (String proteinName) {
+        this.proteins.remove(proteinName);
+    }
 
-    public boolean isToasted() {return isToasted;}
+    // 2. Cheese Remover ----------------
+    public void removeDairy(String cheeseName) {
+        this.cheeses.remove(cheeseName);
+    }
+
+    // 3. Regular Toppings Remover ----------------
+    public void removeVeggie(String toppingName) {
+        this.regularToppings.remove(toppingName);
+    }
+
+    // 4. Sauce Remover ----------------
+    public void removeSauce(String sauceName) {
+        this.sauces.remove(sauceName);
+    }
+
+    //  Getters ===================
+    public String getBreadType() {
+        return breadType;
+    }
+
+    public boolean isToasted() {
+        return isToasted;
+    }
 
     // Derived Getters ==================
     @Override
@@ -77,51 +121,75 @@ public class Sandwich extends MenuItem {
         // 2. Base premium cost for  meats/cheeses on Size
         // 3. Check if isExtraMeat or isExtraCheese are true
 
-            double calculatedPrice = 0.00;
+        double calculatedPrice = 0.00;
 
-            // --- SMALL SANDWICH (4") LOGIC ---
-            if (getSize() == 'S') {
-                // 1. Add Base Price
-                calculatedPrice += 5.50;
+        // --- SMALL SANDWICH (4") LOGIC ---
+        if (getSize() == 'S') {
+            // 1. Add Base Price
+            calculatedPrice += 5.50;
 
-                // 2. Add Premium Meat Price (Only if they added meat)
-                if (!protein.isEmpty()) {calculatedPrice += 1.00;}
-
-                //    Add Premium Cheese Price (Only if they added cheese)
-                if (!cheeses.isEmpty()) {calculatedPrice += 0.75;}
-
-                // 3. Add Extra Meat
-                if (isExtraProtein) {calculatedPrice += 0.50;}
-
-                //    Add Extra Cheese
-                if (isExtraCheese) {calculatedPrice += 0.30;}
+            // 2. Add Premium Meat Price (Only if they added meat)
+            if (!proteins.isEmpty()) {
+                calculatedPrice += 1.00;
             }
 
-            // --- MEDIUM SANDWICH (8") LOGIC ---
-            else if (getSize() == 'M') {
-                calculatedPrice += 7.00;
-
-                if (!protein.isEmpty()) {calculatedPrice += 2.00;}
-
-                if (!cheeses.isEmpty()) {calculatedPrice += 1.50;}
-
-                if (isExtraProtein) {calculatedPrice += 1.00;}
-
-                if (isExtraCheese) {calculatedPrice +=0.60;}
+            //    Add Premium Cheese Price (Only if they added cheese)
+            if (!cheeses.isEmpty()) {
+                calculatedPrice += 0.75;
             }
 
-            // --- LARGE SANDWICH (12") LOGIC ---
-            else if (getSize() == 'L') {
-                calculatedPrice += 8.50;
-
-                if (!protein.isEmpty()) {calculatedPrice += 3.00;}
-
-                if (!cheeses.isEmpty()) {calculatedPrice += 2.25;}
-
-                if (isExtraProtein) {calculatedPrice += 1.50;}
-
-                if (isExtraCheese) {calculatedPrice += 0.90;}
+            // 3. Add Extra Meat
+            if (isExtraProtein) {
+                calculatedPrice += 0.50;
             }
+
+            //    Add Extra Cheese
+            if (isExtraCheese) {
+                calculatedPrice += 0.30;
+            }
+        }
+
+        // --- MEDIUM SANDWICH (8") LOGIC ---
+        else if (getSize() == 'M') {
+            calculatedPrice += 7.00;
+
+            if (!proteins.isEmpty()) {
+                calculatedPrice += 2.00;
+            }
+
+            if (!cheeses.isEmpty()) {
+                calculatedPrice += 1.50;
+            }
+
+            if (isExtraProtein) {
+                calculatedPrice += 1.00;
+            }
+
+            if (isExtraCheese) {
+                calculatedPrice += 0.60;
+            }
+        }
+
+        // --- LARGE SANDWICH (12") LOGIC ---
+        else if (getSize() == 'L') {
+            calculatedPrice += 8.50;
+
+            if (!proteins.isEmpty()) {
+                calculatedPrice += 3.00;
+            }
+
+            if (!cheeses.isEmpty()) {
+                calculatedPrice += 2.25;
+            }
+
+            if (isExtraProtein) {
+                calculatedPrice += 1.50;
+            }
+
+            if (isExtraCheese) {
+                calculatedPrice += 0.90;
+            }
+        }
 
 
         return calculatedPrice;
@@ -135,35 +203,51 @@ public class Sandwich extends MenuItem {
         // 2. Add the main header info (Size, Name, Bread, and Toasting)
         receipt.append("--- ").append(getSize()).append(" ").append(getName()).append(" ---\n");
         receipt.append("Bread: ").append(breadType);
-        if (isToasted) {receipt.append(" (Toasted)");}
+        if (isToasted) {
+            receipt.append(" (Toasted)");
+        }
 
         receipt.append("\n");
 
         // 3. Add Meats (Check if the list has anything in it first)
         receipt.append("Meats: ");
-        if (protein.isEmpty()) {receipt.append("None\n");}
-        else {receipt.append(String.join(", ", protein)); // commas delimiter
-            if (isExtraProtein) {receipt.append(" (*Extra Meat*)");}
+        if (proteins.isEmpty()) {
+            receipt.append("None\n");
+        } else {
+            receipt.append(String.join(", ", proteins)); // commas delimiter
+            if (isExtraProtein) {
+                receipt.append(" (*Extra Meat*)");
+            }
             receipt.append("\n");
         }
 
         // 4. Add Cheeses
         receipt.append("Cheeses: ");
-        if (cheeses.isEmpty()) {receipt.append("None\n");}
-        else {receipt.append(String.join(", ", cheeses));
-            if (isExtraCheese) {receipt.append(" (*Extra Cheese*)");}
+        if (cheeses.isEmpty()) {
+            receipt.append("None\n");
+        } else {
+            receipt.append(String.join(", ", cheeses));
+            if (isExtraCheese) {
+                receipt.append(" (*Extra Cheese*)");
+            }
             receipt.append("\n");
         }
 
         // 5. Add Regular Toppings
         receipt.append("Toppings: ");
-        if (regularToppings.isEmpty()) {receipt.append("None\n");}
-        else {receipt.append(String.join(", ", regularToppings)).append("\n");}
+        if (regularToppings.isEmpty()) {
+            receipt.append("None\n");
+        } else {
+            receipt.append(String.join(", ", regularToppings)).append("\n");
+        }
 
         // 6. Add Sauces
         receipt.append("Sauces: ");
-        if (sauces.isEmpty()) {receipt.append("None\n");}
-        else {receipt.append(String.join(", ", sauces)).append("\n");}
+        if (sauces.isEmpty()) {
+            receipt.append("None\n");
+        } else {
+            receipt.append(String.join(", ", sauces)).append("\n");
+        }
 
         // 7. Add the Price ( 2 decimal places)
         receipt.append(String.format("Price: $%.2f\n", getPrice()));
@@ -171,4 +255,6 @@ public class Sandwich extends MenuItem {
         // 8. Convert the StringBuilder into a regular String
         return receipt.toString();
     }
+
+
 }

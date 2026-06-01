@@ -8,7 +8,6 @@ import com.bigbacks.model.Sandwich;
 import com.bigbacks.model.SignatureSandwiches;
 
 import java.util.Scanner;
-import java.util.StringTokenizer;
 
 public class Menu {
     //Attributes ======================
@@ -17,38 +16,6 @@ public class Menu {
     static OrderManager currentOrder = new OrderManager();
     static boolean runHome;
     static boolean runOrder;
-//    //all inputs-----------------
-//    //for real-time display
-//    static int breadChoice;
-//    static char sandwichSize;
-//
-//    static int premiumTopping1; //protein
-//    static int premiumTopping2; //cheese
-//
-//    //regular toppings (veggies)
-//    static int topping1;
-//    static int topping2;
-//    static int topping3;
-//    static int topping4;
-//    static int topping5;
-//    static int topping6;
-//    static int topping7;
-//
-//    static int extraTopping1; //protein
-//    static int extraTopping2; //protein
-//
-//    static int extraTopping3; //cheese
-//    static int extraTopping4; //cheese
-//
-//    static int sauce1;
-//    static int sauce2;
-//    static int sauce3;
-//
-//    static int drinkChoice;
-//    static char drinkSize;
-//
-//    static int addOnChoice;
-//    static char addOnSize;
 
     //⭐9. Sign on-screen====================
     //displaySignInScreen() -> [1] Sign-in, [2] Sign-up, [3] Guest
@@ -165,7 +132,8 @@ public class Menu {
                     -------------------------------
                     \n
                     |    0. Cancel Order          |
-                    -------------------------------""");
+                    -------------------------------
+                    ➰➰➰➰➰➰➰➰➰➰➰➰➰➰""");
 
             //----------User Input-----------
             int screenChoice = input.nextInt();
@@ -193,210 +161,235 @@ public class Menu {
 
         //--------body--------
         while (runSignatureMenu) {
-            System.out.println("""
-                    -------------------------------
-                          SIGNATURE SANDWICHES
-                    -------------------------------
-                             ⭐   ⭐   ⭐""");
-            System.out.println("""
-                    -------------------------------
-                           [1] THE GOAT
-                    ===============================
-                    | 1. Protein: Tofu             |
-                    | 2. Dairy: Hummus (non-dairy) |
-                    | 3. Carbs: Wheat Bread        |
-                    | 4. Veggies: Lettuce, Tomatoes|
-                    |            Onions, Guacamole |
-                    | 5. Sauce: Vinegar            |
-                    -------------------------------
-                                   ⭐""");
-            System.out.println("""
-                    -------------------------------
-                          [2] THE GRIZZLY
-                    ===============================
-                    | 1. Protein: Ham, Beacon      |
-                    | 2. Dairy: Cheddar Cheese     |
-                    | 3. Carbs: White Bread        |
-                    | 4. Veggies: Onions, Pickles, |
-                    |             Jalapenos        |
-                    | 5. Sauce: Mustard, Ketchup   |
-                    -------------------------------
-                                   ⭐""");
-            System.out.println("""
-                    -------------------------------
-                          [3] THE HIPPO
-                    ===============================
-                    | 1. Protein: Turkey           |
-                    | 2. Dairy: Provolone Cheese   |
-                    | 3. Carbs: Wrap               |
-                    | 4. Veggies: Cucumber, Onions,|
-                    |           Tomatoes, Mushrooms|
-                    | 5. Sauce: Mayo, Hummus       |
-                    -------------------------------""");
+
+            displaySignatureSandwichesMenu();
 
             //----------User Input-----------
-            int sandwichChoice = input.nextInt();
-            SignatureSandwiches.setChoice(sandwichChoice);
-            String sandwitchName = switch (sandwichChoice) {
-                case 1 -> "The Goat";
-                case 2 -> "The Grizzly";
-                case 3 -> "The Hippo";
-                default -> "None Selected";
-            };
-
-            //---------keep track------------
-            System.out.println("\n+ " + sandwitchName);
-
-            Sandwich sandwich = new SignatureSandwiches('l', "Wheat", true);
+            int sandwich = input.nextInt();
+            Sandwich sandwichChoice = SignatureSandwiches.getByChoice(sandwich);
 
             //----------Customize-----------
-            System.out.println("""
-                    -------------------------------
-                       ? CUSTOMIZE INGREDIENTS ?
-                    -------------------------------
-                    |          1. Yes             |
-                    |          2. No              |
-                    ===============================""");
+            displayCustomizingRequest();
 
             int editIngredients = input.nextInt();
 
-            //--------control switch---------
-            if (editIngredients == 1) {
-                System.out.println("""
-                        -------------------------------
-                        |          1. ADD             |
-                        |          2. REMOVE          |
-                        ==============================="""); //➕ REPLACE
+            boolean editingIngredients = true;
 
-                int addRemoveIngredients = input.nextInt();
+            while(editingIngredients) {
 
-                if (addRemoveIngredients == 1) {
+                //--------control switch---------
+                if (editIngredients == 1) {
+                    editingIngredients = true;
                     System.out.println("""
                             -------------------------------
-                                    ADD INGREDIENTS
-                            -------------------------------
-                            |          1. Protein         |
-                            |          2. Dairy           |
-                            |          3. Veggies         |
-                            ===============================""");
+                            |          1. ADD             |
+                            |          2. REMOVE          |
+                            ==============================="""); //➕ REPLACE
 
-                    int addType = input.nextInt();
+                    int addRemoveIngredients = input.nextInt();
 
-                    switch (addType) {
-                        case 1 -> {
-                            System.out.println("""
-                                    -------------------------------
-                                                PROTEIN
-                                    ===============================
-                                    |1. Small (4")            |
-                                    |2. Medium (8")           |
-                                    |3. Large (12")           |
-                                    |4. Large (12")           |
-                                    -------------------------------""");
+                    if (addRemoveIngredients == 1) {
+                        System.out.println("""
+                                -------------------------------
+                                        ADD INGREDIENTS
+                                -------------------------------
+                                |          1. Protein         |
+                                |          2. Dairy           |
+                                |          3. Veggies         |
+                                ===============================
+                                ➰➰➰➰➰➰➰➰➰➰➰➰➰➰""");
 
-                            int extraProtein = input.nextInt();
-                            //⭕--------Add to Order----------
+                        int addType = input.nextInt();
 
+                        switch (addType) {
+                            case 1 -> {
+                                displayProteinMenu();
+                                input.nextLine(); //clear buffer
+                                System.out.print("Enter choices (e.g. 123): ");
+                                String extraProtein = input.nextLine().trim();
+
+                                for (char c : extraProtein.toCharArray()) {
+                                    String extraChoice = proteinFromChar(c);
+                                    if (!extraChoice.equals("None")) {
+                                        System.out.println("\n➕ " + extraChoice);
+                                        assert sandwichChoice != null;
+                                        sandwichChoice.addProtein(extraChoice, true);
+                                    }
+                                }
+
+                                //----------- After 1st Customization
+
+                                displayCustomizingRequest();
+
+                                editIngredients = input.nextInt();
+
+                                switch (editIngredients) {
+                                    case 1 -> editingIngredients = true;
+                                    case 2 -> editingIngredients = false;
+                                }
+
+                            }
+                            case 2 -> {
+                                displayDairyMenu();
+                                input.nextLine(); //clear buffer
+                                System.out.print("Enter choices (e.g. 123): ");
+                                String extraDairy = input.nextLine().trim();
+
+                                for (char c : extraDairy.toCharArray()) {
+                                    String extraChoice = dairyFromChar(c);
+                                    if (!extraChoice.equals("None")) {
+                                        System.out.println("\n➕ " + extraChoice);
+                                        assert sandwichChoice != null;
+                                        sandwichChoice.addDairy(extraChoice, true);
+                                    }
+                                }
+
+                                //----------- After 1st Customization
+
+                                displayCustomizingRequest();
+
+                                editIngredients = input.nextInt();
+
+                                switch (editIngredients) {
+                                    case 1 -> editingIngredients = true;
+                                    case 2 -> editingIngredients = false;
+                                }
+                            }
+                            case 3 -> {
+                                displayVeggieMenu();
+                                input.nextLine(); //clear buffer
+                                System.out.print("Enter choices (e.g. 123): ");
+                                String extraVeggie = input.nextLine().trim();
+
+                                for (char c : extraVeggie.toCharArray()) {
+                                    String extraChoice = veggieFromChar(c);
+                                    System.out.println("\n➕ " + extraChoice);
+                                    assert sandwichChoice != null;
+                                    sandwichChoice.addRegularTopping(extraChoice);
+
+                                }
+
+                                //----------- After 1st Customization
+
+                                displayCustomizingRequest();
+
+                                editIngredients = input.nextInt();
+
+                                switch (editIngredients) {
+                                    case 1 -> editingIngredients = true;
+                                    case 2 -> editingIngredients = false;
+                                }
+                            }
                         }
-                        case 2 -> {
-                            System.out.println("""
-                                    -------------------------------
-                                                 DAIRY
-                                    ===============================
-                                    |1. Small (4")            |
-                                    |2. Medium (8")           |
-                                    |3. Large (12")           |
-                                    |4. Large (12")           |
-                                    -------------------------------""");
+                    } else if (addRemoveIngredients == 2) {
+                        System.out.println("""
+                                -------------------------------
+                                       REMOVE INGREDIENTS
+                                -------------------------------
+                                |          1. Protein         |
+                                |          2. Dairy           |
+                                |          3. Veggies         |
+                                ===============================
+                                ➰➰➰➰➰➰➰➰➰➰➰➰➰➰""");
+                        int removeType = input.nextInt();
+                        switch (removeType) {
+                            // -----------REMOVE PROTEIN
+                            case 1 -> {
+                                if (sandwichChoice != null) {
 
-                            int extraDairy = input.nextInt();
-                            //⭕--------Add to Order----------
-                        }
-                        case 3 -> {
-                            System.out.println("""
-                                    -------------------------------
-                                                Veggies
-                                    ===============================
-                                    |1. Small (4")           |
-                                    |2. Medium (8")           |
-                                    |3. Large (12")           |
-                                    |4. Large (12")           |
-                                    -------------------------------""");
+                                    input.nextLine(); // clear buffer
+                                    System.out.print("Enter protein to remove: ");
+                                    String removeChoice = input.nextLine().toLowerCase();
 
-                            int extraTopping = input.nextInt();
-                            //⭕--------Add to Order----------
+                                    // 2. Access the protein list using a getter (or field) and check if the ingredient exists
+                                    if (sandwichChoice.getProteins().contains(removeChoice)) {
+                                        sandwichChoice.removeProtein(removeChoice);
+                                        System.out.println("\n➖ " + removeChoice );
+                                    }
+                                }
+
+                                //----------- After 1st Customization
+
+                                displayCustomizingRequest();
+
+                                editIngredients = input.nextInt();
+
+                                switch (editIngredients) {
+                                    case 1 -> editingIngredients = true;
+                                    case 2 -> editingIngredients = false;
+                                }
+
+                            }
+                            // -----------REMOVE DAIRY
+                            case 2 -> {
+                                if (sandwichChoice != null) {
+
+                                input.nextLine(); // clear buffer
+                                System.out.print("Enter Dairy to remove: ");
+                                String removeChoice = input.nextLine().toLowerCase();
+
+                                if (sandwichChoice.getDairy().contains(removeChoice)) {
+                                    sandwichChoice.removeDairy(removeChoice);
+                                    System.out.println("\n➖ " + removeChoice );
+                                }
+                            }
+
+                                //----------- After 1st Customization
+
+                                displayCustomizingRequest();
+
+                                editIngredients = input.nextInt();
+
+                                switch (editIngredients) {
+                                    case 1 -> editingIngredients = true;
+                                    case 2 -> editingIngredients = false;
+                                }
+                            }
+                            // -----------REMOVE VEGGIES
+                            case 3 -> {
+                                if (sandwichChoice != null) {
+
+                                    input.nextLine(); // clear buffer
+                                    System.out.print("Enter Veggie Dairy to remove: ");
+                                    String removeChoice = input.nextLine().toLowerCase();
+
+                                    if (sandwichChoice.getDairy().contains(removeChoice)) {
+                                        sandwichChoice.removeVeggie(removeChoice);
+                                        System.out.println("\n➖ " + removeChoice);
+                                    }
+                                }
+
+                                //----------- After 1st Customization
+
+                                displayCustomizingRequest();
+
+                                editIngredients = input.nextInt();
+
+                                switch (editIngredients) {
+                                    case 1 -> editingIngredients = true;
+                                    case 2 -> editingIngredients = false;
+                                }
+                            }
                         }
+
                     }
-                } else if (addRemoveIngredients == 2) {
-                    System.out.println("""
-                            -------------------------------
-                                   REMOVE INGREDIENTS
-                            -------------------------------
-                            |          1. Protein         |
-                            |          2. Dairy           |
-                            |          3. Veggies         |
-                            ===============================""");
-                    int removeType = input.nextInt();
-                    switch (removeType) {
-                        case 1 -> {
-                            System.out.println("""
-                                    -------------------------------
-                                                PROTEIN
-                                    ===============================
-                                    |1. Small (4")         |
-                                    |2. Medium (8")           |
-                                    |3. Large (12")           |
-                                    |4. Large (12")           |
-                                    -------------------------------""");
 
-                            int extraProtein = input.nextInt();
-                            //⭕--------Add to Order----------
-
-                        }
-                        case 2 -> {
-                            System.out.println("""
-                                    -------------------------------
-                                                 DAIRY
-                                    ===============================
-                                    |1. Small (4")            |
-                                    |2. Medium (8")           |
-                                    |3. Large (12")           |
-                                    |4. Large (12")           |
-                                    -------------------------------""");
-
-                            int extraDairy = input.nextInt();
-                            //⭕--------Add to Order----------
-                        }
-                        case 3 -> {
-                            System.out.println("""
-                                    -------------------------------
-                                                Veggies
-                                    ===============================
-                                    |1. Small (4")           |
-                                    |2. Medium (8")           |
-                                    |3. Large (12")           |
-                                    |4. Large (12")           |
-                                    -------------------------------""");
-
-                            int extraTopping = input.nextInt();
-                            //⭕--------Add to Order----------
-                        }
-                    }
                 } else if (editIngredients == 2) {
-                    //⭕--------Add to Order----------
-
-                    //⭕--------change Screen---------
-
-
-                    runSignatureMenu = false;
+                    editingIngredients = false;
                 }
-
-
-                //⭕--------Add to Order----------
-
-                //--------change Screen---------
-               displayNavigationBar();
             }
+
+            //--------Add to Order----------
+            currentOrder.addItem(sandwichChoice);
+
+            //---------keep track------------
+            System.out.println("\n➕ " + sandwichChoice.getName());
+
+            runSignatureMenu = false;
+
+            //--------change Screen---------
+            displayNavigationBar();
+
         }
     }
 
@@ -425,7 +418,8 @@ public class Menu {
                     |          2. Wheat           |
                     |          3. Rye             |
                     |          4. Wrap            |
-                    -------------------------------""");
+                    -------------------------------
+                    ➰➰➰➰➰➰➰➰➰➰➰➰➰➰""");
 
             int breadChoice = input.nextInt();
             String breadType = switch (breadChoice) {
@@ -454,7 +448,8 @@ public class Menu {
                     ===============================
                     |        1. Toasted           |
                     |        2. Not toasted       |
-                    -------------------------------""");
+                    -------------------------------
+                    ➰➰➰➰➰➰➰➰➰➰➰➰➰➰""");
 
             int toastOption = input.nextInt();
             boolean isToasted = (toastOption == 1);
@@ -501,7 +496,7 @@ public class Menu {
             String dairyChoice = dairyFromInt(premiumTopping2);
 
             System.out.println("\n➕ " + dairyChoice + "\n");
-            customSandwich.addCheese(dairyChoice, false);
+            customSandwich.addDairy(dairyChoice, false);
 
             // ---------------------Extra Dairy
             System.out.println("""
@@ -522,7 +517,7 @@ public class Menu {
                     String extraCheeseChoice = dairyFromChar(c);
                     if (!extraCheeseChoice.equals("None")) {
                         System.out.println("\n➕ " + extraCheeseChoice);
-                        customSandwich.addCheese(extraCheeseChoice, true);
+                        customSandwich.addDairy(extraCheeseChoice, true);
                     }
                 }
             }
@@ -607,7 +602,8 @@ public class Menu {
                     |         2. Smoothie         |
                     |         3. Coffee           |
                     |         4. Tea              |
-                    -------------------------------""");
+                    -------------------------------
+                    ➰➰➰➰➰➰➰➰➰➰➰➰➰➰""");
             //----------User Input-----------
             int drinkTypeChoice = input.nextInt();
             String drinkType = switch (drinkTypeChoice) {
@@ -627,7 +623,8 @@ public class Menu {
                         |          1. Coke             |
                         |          2. Sprite           |
                         |          3. Fanta            |
-                        -------------------------------""");
+                        --------------------------------
+                        ➰➰➰➰➰➰➰➰➰➰➰➰➰➰""");
                 //----------User Input-----------
                 int sodaChoice = input.nextInt();
                 String drinkName = switch (sodaChoice) {
@@ -663,7 +660,8 @@ public class Menu {
                         |         1. Mango             |
                         |         2. Banana            |
                         |         3. Strawberry        |
-                        -------------------------------""");
+                        --------------------------------
+                        ➰➰➰➰➰➰➰➰➰➰➰➰➰➰""");
                 //----------User Input-----------
                 int smoothieChoice = input.nextInt();
                 String drinkName = switch (smoothieChoice) {
@@ -697,7 +695,8 @@ public class Menu {
                         ===============================
                         |           1. Hot            |
                         |           2. Cold           |
-                        -------------------------------""");
+                        -------------------------------
+                        ➰➰➰➰➰➰➰➰➰➰➰➰➰➰""");
                 //----------User Input-----------
                 int coffeeChoice = input.nextInt();
                 String drinkName = switch (coffeeChoice) {
@@ -727,7 +726,8 @@ public class Menu {
                         ===============================
                         |           1. Hot            |
                         |           2. Cold           |
-                        -------------------------------""");
+                        -------------------------------
+                        ➰➰➰➰➰➰➰➰➰➰➰➰➰➰""");
                 //----------User Input-----------
                 int teaChoice = input.nextInt();
                 String drinkName = switch (teaChoice) {
@@ -768,7 +768,7 @@ public class Menu {
 
         //--------body--------
         while (runAddOn) {
-            System.out.println("""
+            System.out.print("""
                     -------------------------------
                                 ADD-ONs
                     -------------------------------
@@ -778,11 +778,12 @@ public class Menu {
                     -------------------------------
                              ADD-ON TYPE
                     ===============================
-                    |1. Chips         |
-                    |2. Fries           |
-                    |3. Cookie           |
-                    |4. Brownie         |
-                    -------------------------------""");
+                    |          1. Chips           |
+                    |          2. Fries           |
+                    |          3. Cookie          |
+                    |          4. Brownie         |
+                    -------------------------------
+                    ➰➰➰➰➰➰➰➰➰➰➰➰➰➰""");
             //----------User Input-----------
             int addOnTypeChoice = input.nextInt();
             String addOnType = switch (addOnTypeChoice) {
@@ -802,7 +803,8 @@ public class Menu {
                         |           1. Doritos         |
                         |           2. Cheetos         |
                         |           3. Lays            |
-                        -------------------------------""");
+                        -------------------------------
+                        ➰➰➰➰➰➰➰➰➰➰➰➰➰➰""");
                 //----------User Input-----------
                 int addOnChoice = input.nextInt();
                 String addOnName = switch (addOnChoice) {
@@ -838,7 +840,8 @@ public class Menu {
                         |      1. Onion Rings         |
                         |      2. Stick Fries         |
                         |      3. Waffle Fries        |
-                        -------------------------------""");
+                        -------------------------------
+                        ➰➰➰➰➰➰➰➰➰➰➰➰➰➰""");
                 //----------User Input-----------
                 int addOnChoice = input.nextInt();
                 String addOnName = switch (addOnChoice) {
@@ -860,7 +863,8 @@ public class Menu {
                         |        0. NONE (4")         |
                         |        1. light (8")        |
                         |        2. Regular (12")     |
-                        -------------------------------""");
+                        -------------------------------
+                        ➰➰➰➰➰➰➰➰➰➰➰➰➰➰""");
 
                 int saltChoice = input.nextInt();
                 String saltLevel = switch (saltChoice) {
@@ -888,7 +892,8 @@ public class Menu {
                         ===============================
                         |    1. White Chocolate       |
                         |    2. Dark Chocolate        |
-                        -------------------------------""");
+                        -------------------------------
+                        ➰➰➰➰➰➰➰➰➰➰➰➰➰➰""");
                 //----------User Input-----------
                 int addOnChoice = input.nextInt();
                 String addOnName = switch (addOnChoice) {
@@ -921,7 +926,8 @@ public class Menu {
                         |           S. Small          |
                         |           M. Medium         |
                         |           L. Large          |
-                        -------------------------------""");
+                        -------------------------------
+                        ➰➰➰➰➰➰➰➰➰➰➰➰➰➰""");
 
 
                 String addOnName = "Brownie";
@@ -1038,6 +1044,60 @@ public class Menu {
 
 
     //Sandwich menus
+    static void displaySignatureSandwichesMenu(){
+
+        System.out.println("""
+                    -------------------------------
+                          SIGNATURE SANDWICHES
+                    -------------------------------
+                             ⭐   ⭐   ⭐""");
+        System.out.println("""
+                    -------------------------------
+                           [1️⃣] THE GOAT
+                    ===============================
+                    | 1. Protein: Tofu             |
+                    | 2. Dairy: Hummus (non-dairy) |
+                    | 3. Carbs: Wheat Bread        |
+                    | 4. Veggies: Lettuce, Tomatoes|
+                    |            Onions, Guacamole |
+                    | 5. Sauce: Vinegar            |
+                    -------------------------------
+                                   ⭐""");
+        System.out.println("""
+                    -------------------------------
+                          [2️⃣] THE GRIZZLY
+                    ===============================
+                    | 1. Protein: Ham, Beacon      |
+                    | 2. Dairy: Cheddar Cheese     |
+                    | 3. Carbs: White Bread        |
+                    | 4. Veggies: Onions, Pickles, |
+                    |             Jalapenos        |
+                    | 5. Sauce: Mustard, Ketchup   |
+                    -------------------------------
+                                   ⭐""");
+        System.out.println("""
+                    -------------------------------
+                          [3️⃣] THE HIPPO
+                    ===============================
+                    | 1. Protein: Turkey           |
+                    | 2. Dairy: Provolone Cheese   |
+                    | 3. Carbs: Wrap               |
+                    | 4. Veggies: Cucumber, Onions,|
+                    |           Tomatoes, Mushrooms|
+                    | 5. Sauce: Mayo, Hummus       |
+                    -------------------------------""");
+    }
+
+    static void displayCustomizingRequest(){
+        System.out.println("""
+                    -------------------------------
+                       ? CUSTOMIZE INGREDIENTS ?
+                    -------------------------------
+                    |          1. Yes             |
+                    |          2. No              |
+                    ===============================""");
+    }
+
     static void displaySandwichSizeMenu(){
         System.out.println("""
                         -------------------------------

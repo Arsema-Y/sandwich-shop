@@ -48,13 +48,13 @@ public class OrderManager {
         // Loop through every item in the cart
         for (MenuItem item : orderItems) {
             //  MenuItem should a getName() method and getPrice() logic
-            receiptBuilder.append(String.format("%-25s", item.getName()))
-                    .append(" - $")
+            receiptBuilder.append(String.format("%-15s", item.getName()))
+                    .append(" -      $")
                     .append(String.format("%.2f", item.getPrice()))
                     .append("\n");
         }
 
-        receiptBuilder.append("-----------------------------\n");
+        receiptBuilder.append("-------------------------------\n");
         receiptBuilder.append("       Total: $")
                 .append(String.format("%.2f", getOrderTotal()))
                 .append("\n");

@@ -1,69 +1,44 @@
 package com.bigbacks.model;
 
-public class SignatureSandwiches extends Sandwich {
+public class SignatureSandwiches {
     //Attributes
-    private int choice;
-
-    //constructor===================
-    // takes signatureName (e.g., "Philly Cheese Steak"), size, bread, toasted
-    // calls super(bread, size, toasted)
-    public SignatureSandwiches(int choice, String name, char size, String breadType, boolean isToasted) {
-        super(name, size, breadType, isToasted);
-
-        this.choice = choice;
-
-        //solidify sandwiches
-        makeSignatureSandwiches();
-
-    }
-
-    public int getChoice() {return choice;}
-
-    public static void setChoice(int sandwichChoice) {}
+    public static Sandwich signatureSandwich1;
+    public static Sandwich signatureSandwich2;
+    public static Sandwich signatureSandwich3;
 
     // Helper method--------------
-    public void makeSignatureSandwiches() {
-        switch (getChoice()) {
-            case 1 -> {
-                //-----------------------work in progress--------------------------------
-                setName("The Goat");
-                setSize('l');
-                this.addProtein("Tofu", false);
-                this.addRegularTopping("Lettuce");
-                this.addRegularTopping("Tomato");
-                this.addRegularTopping("Onion");
-                this.addRegularTopping("Guacamole");
-                this.addSauce("Mustard");
-                this.addSauce("Vinaigrette");
-            }
-            case 2 -> {
-                setName("Big Grizzly");
-                setSize('l');
-                this.addProtein("Bacon", false);
-                this.addRegularTopping("Lettuce");
-                this.addRegularTopping("Tomato");
-                this.addSauce("Mayo");
-            }
-            case 3 -> {
-                setName("Big Hippo");
-                setSize('l');
-                this.addProtein("Bacon", false);
-                this.addRegularTopping("Lettuce");
-                this.addRegularTopping("Tomato");
-                this.addSauce("Mayo");
-            }
-            default -> {
-                // Optional: Handles the case where a name doesn't match any recipe
-                System.out.println("Unavailable.\n Would you like to make a Custom Sandwich?" );
-            }
-        }
-        ;
+    public static void makeSignatureSandwiches() {
+        //-----------------------work in progress--------------------------------
+        signatureSandwich1 = new Sandwich("The Goat", 'L', "Wheat", true);
+
+        signatureSandwich1.addProtein("tofu", false);
+        signatureSandwich1.addRegularTopping("lettuce");
+        signatureSandwich1.addRegularTopping("tomato");
+        signatureSandwich1.addRegularTopping("onion");
+        signatureSandwich1.addRegularTopping("guacamole");
+        signatureSandwich1.addSauce("mustard");
+        signatureSandwich1.addSauce("vinaigrette");
+
+        signatureSandwich2 = new Sandwich("Big Grizzly", 'L', "White", true);
+        signatureSandwich2.addProtein("Bacon", false);
+        signatureSandwich2.addRegularTopping("Lettuce");
+        signatureSandwich2.addRegularTopping("Tomato");
+        signatureSandwich2.addSauce("Mayo");
+
+        signatureSandwich3 = new Sandwich("Big Hippo", 'L', "Wrap", true);
+        signatureSandwich3.addProtein("Bacon", false);
+        signatureSandwich3.addRegularTopping("Lettuce");
+        signatureSandwich3.addRegularTopping("Tomato");
+        signatureSandwich3.addSauce("Mayo");
+
     }
 
-    //derived getters==================
-    // getPrice() -> calls super.getPrice()
-    @Override
-    public double getPrice() {
-        return super.getPrice();
+    public static Sandwich getByChoice(int choice) {
+        return switch (choice) {
+            case 1 -> signatureSandwich1;
+            case 2 -> signatureSandwich2;
+            case 3 -> signatureSandwich3;
+            default -> null;
+        };
     }
 }
